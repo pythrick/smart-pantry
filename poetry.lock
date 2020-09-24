@@ -436,7 +436,7 @@ version = "8.1"
 [metadata]
 content-hash = "3c6b8f73eb72b841c3d5997b471a3bfa0c5ee33aa9c54f3aee7e51447218f962"
 lock-version = "1.0"
-python-versions = "^3.8.5"
+python-versions = "3.8.5"
 
 [metadata.files]
 aiosqlite = [
