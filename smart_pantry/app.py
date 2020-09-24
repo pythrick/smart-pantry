@@ -1,6 +1,7 @@
 import os
 from typing import List
 
+import sentry_sdk
 from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 
@@ -38,4 +39,9 @@ register_tortoise(
     modules={"models": ["smart_pantry.models"]},
     generate_schemas=True,
     add_exception_handlers=True,
+)
+
+
+sentry_sdk.init(
+    os.getenv("SENTRY_DSN"), traces_sample_rate=1.0, environment=os.getenv("SENTRY_ENV")
 )
