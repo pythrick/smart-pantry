@@ -434,9 +434,9 @@ python-versions = ">=3.6.1"
 version = "8.1"
 
 [metadata]
-content-hash = "13fdc5d41df253e871dd3e4835bc0f6dc3d45605b931282f6d56fae05c78ddba"
+content-hash = "3c6b8f73eb72b841c3d5997b471a3bfa0c5ee33aa9c54f3aee7e51447218f962"
 lock-version = "1.0"
-python-versions = "^3.8"
+python-versions = "^3.8.5"
 
 [metadata.files]
 aiosqlite = [
