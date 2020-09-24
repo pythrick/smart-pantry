@@ -1,14 +1,11 @@
+import os
 from typing import List
 
 from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 
-from smart_pantry.schemas import (
-    ProductInSchema,
-    ProductSchema,
-    UnitOfMeasureInSchema,
-    UnitOfMeasureSchema,
-)
+from smart_pantry.schemas import (ProductInSchema, ProductSchema,
+                                  UnitOfMeasureInSchema, UnitOfMeasureSchema)
 from smart_pantry.services import product as product_service
 from smart_pantry.services import unit_of_measure as unit_of_measure_service
 
@@ -37,7 +34,7 @@ async def list_products() -> List[ProductSchema]:
 
 register_tortoise(
     app,
-    db_url="sqlite://db.sqlite3",
+    db_url=os.getenv("DATABASE_URL", "sqlite://db.sqlite3"),
     modules={"models": ["smart_pantry.models"]},
     generate_schemas=True,
     add_exception_handlers=True,
