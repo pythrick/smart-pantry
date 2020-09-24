@@ -5,7 +5,7 @@ import pytest
 from faker import Faker
 from fastapi.testclient import TestClient
 from smart_pantry.app import app
-from smart_pantry.models import Product, UnitOfMeasure
+from smart_pantry.models import Product
 from tortoise.contrib.test import finalizer, initializer
 
 
@@ -36,11 +36,5 @@ def fake():
 
 @pytest.fixture()
 @pytest.mark.asyncio
-async def unit_of_measure(fake) -> UnitOfMeasure:
-    return await UnitOfMeasure.create(name=fake.word(), abbrev=fake.pystr(max_chars=3))
-
-
-@pytest.fixture()
-@pytest.mark.asyncio
-async def product(fake, unit_of_measure) -> Product:
-    return await Product.create(name=fake.word(), unit_of_measure=unit_of_measure)
+async def product(fake) -> Product:
+    return await Product.create(name=fake.word())

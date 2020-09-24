@@ -3,18 +3,14 @@ from typing import Dict, List
 
 import pytest
 from fastapi.testclient import TestClient
-from smart_pantry.models import Product, UnitOfMeasure
+from smart_pantry.models import Product
 from smart_pantry.schemas import ProductSchema
 
 
 @pytest.fixture
-def create_request(unit_of_measure: UnitOfMeasure, client: TestClient, fake):
+def create_request(client: TestClient, fake):
     response = client.post(
-        "/api/v1/products",
-        json={
-            "name": fake.pystr(min_chars=5, max_chars=20),
-            "unit_of_measure": unit_of_measure.abbrev,
-        },
+        "/api/v1/products", json={"name": fake.pystr(min_chars=5, max_chars=20),},
     )
 
     return response.json()
